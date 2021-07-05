@@ -1,5 +1,6 @@
 # Studies in JAVA with Android Studio
-Continuous study in JAVA
+###### Started this project on: 05/07/21
+   Continuous study in JAVA
 In this repository I put my practice lessons about JAVA. This exercises was results of studys of course Mobile Dispositions offer for Universidade Federal do Rio Grande do Norte how free course about programming. The process started in apryl 2021 and finished in july 2021. The themes offers was programming fundaments and JAVA developering.
 Make with:
 
