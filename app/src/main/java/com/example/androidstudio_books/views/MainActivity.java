@@ -1,10 +1,12 @@
-package com.example.androidstudio_books;
+package com.example.androidstudio_books.views;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+
+import com.example.androidstudio_books.R;
 
 public class MainActivity extends AppCompatActivity {
 
