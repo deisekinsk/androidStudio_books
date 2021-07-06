@@ -17,7 +17,11 @@
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android.id="@+id/id_book"
+                android:id="@+id/ic_book"
+                android:src="@drawable/ic_book"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                />
 
         </RelativeLayout>
 
