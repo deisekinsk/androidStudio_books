@@ -1,5 +1,7 @@
 package com.example.androidstudio_books.views;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -7,6 +9,14 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.os.Bundle;
 
 import com.example.androidstudio_books.R;
+import com.example.androidstudio_books.adapter.BooksAdapter;
+import com.example.androidstudio_books.dominio.BooksClass;
+
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.List;
+import java.util.ListIterator;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -22,7 +32,16 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         //data and layout of list
-        //recyclerView.setAdapter();
+        List<BooksClass> booksClassList = new ArrayList<>();
+
+        BooksClass b1 = new BooksClass(1L, "Quem tem medo do feminismo negro?","Djamila Ribeiro","Companhia das Letras", true);
+
+        booksClassList.add(b1);
+
+
+
+        BooksAdapter booksAdapter = new BooksAdapter(booksClassList, this);
+        recyclerView.setAdapter(booksAdapter);
 
     }
 }

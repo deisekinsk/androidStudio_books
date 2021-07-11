@@ -15,6 +15,7 @@ public class BooksClass {
         this.read = read;
     }
     //methods
+
     //1_id GET
     public Long getId(){
         return id;
@@ -23,6 +24,7 @@ public class BooksClass {
     public void setId(Long id){
         this.id = id;
     }
+
     //2_title GET
     public String getTitle(){
         return title;
@@ -31,6 +33,7 @@ public class BooksClass {
     public void getTitle(String title){
         this.title = title;
     }
+
     //3_author GET
     public String getAuthor(){
         return author;
@@ -39,6 +42,7 @@ public class BooksClass {
     public void setAuthor(String author) {
         this.author = author;
     }
+
     //4_company GET
     public String getCompany() {
         return company;
@@ -47,6 +51,7 @@ public class BooksClass {
     public void setCompany(String company) {
         this.company = company;
     }
+
     //read GET
     public boolean isRead(){
         return read;

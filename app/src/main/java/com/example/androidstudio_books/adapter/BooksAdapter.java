@@ -2,6 +2,7 @@ package com.example.androidstudio_books.adapter;
 
 import android.content.Context;
 import android.media.Image;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -15,6 +16,7 @@ import com.example.androidstudio_books.dominio.BooksClass;
 
 import java.util.List;
 
+//iteration book list with layout for each line
 public class BooksAdapter extends RecyclerView.Adapter<BooksAdapter.BookHolder> {
     //attributes
     private List<BooksClass> books;
@@ -29,39 +31,53 @@ public class BooksAdapter extends RecyclerView.Adapter<BooksAdapter.BookHolder> 
 
 
     //methods
+    //method for return view hold
     @NonNull
     @Override
     public BookHolder onCreateViewHolder(@NonNull  ViewGroup parent, int viewType) {
-        return null;
-    }
+        View view = LayoutInflater.from(context)
+                .inflate(R.layout.item_book, parent, false);
 
+        BookHolder bookHolder = new BookHolder(view);
+
+        return bookHolder; //return for the method onBindViewHolder
+    }
+    //android make this form, and don't use declared FOR iteration in this situation.
     @Override
-    public void onBindViewHolder(@NonNull BooksAdapter.BookHolder holder, int position) {
+    public void onBindViewHolder(@NonNull BookHolder holder, int position) {
+        BooksClass book = books.get(position);
+
+        holder.txtTitle.setText(book.getTitle());
+        holder.txtAuthor.setText(book.getAuthor());
+        holder.txtCompany.setText(book.getCompany());
+
+
 
     }
 
     //method for size of list
     @Override
     public int getItemCount() {
-        return 0;
+        return books.size();
     }
-    //iteration book list with layout for wich line
 
 
 
+
+    //class that get information for cards
     public class BookHolder extends RecyclerView.ViewHolder{
         public TextView txtTitle;
         public TextView txtAuthor;
-        public TextView txtEmploy;
+        public TextView txtCompany;
         public ImageView ic_book;
 
-    //class that get information for cards
+
         public BookHolder (View view){
             super(view);
 
             txtTitle = view.findViewById(R.id.txtTitle);
             txtAuthor = view.findViewById(R.id.txtAuthor);
-            txtEmploy = view.findViewById(R.id.txtEmploy);
+            txtCompany = view.findViewById(R.id.txtCompany);
             ic_book = view.findViewById(R.id.ic_book);
 
         }
