@@ -1,12 +1,14 @@
 package com.example.androidstudio_books.adapter;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.media.Image;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -51,6 +53,10 @@ public class BooksAdapter extends RecyclerView.Adapter<BooksAdapter.BookHolder> 
         holder.txtAuthor.setText(book.getAuthor());
         holder.txtCompany.setText(book.getCompany());
 
+        //change color for the boolean case
+        if (book.isRead()){
+            holder.ic_book.setColorFilter(Color.GREEN);
+        }
 
 
     }
@@ -64,8 +70,8 @@ public class BooksAdapter extends RecyclerView.Adapter<BooksAdapter.BookHolder> 
 
 
 
-    //class that get information for cards
-    public class BookHolder extends RecyclerView.ViewHolder{
+    //class that get information for cards + implements for long click
+    public class BookHolder extends RecyclerView.ViewHolder implements View.OnClickListener, View.OnLongClickListener {
         public TextView txtTitle;
         public TextView txtAuthor;
         public TextView txtCompany;
@@ -80,8 +86,29 @@ public class BooksAdapter extends RecyclerView.Adapter<BooksAdapter.BookHolder> 
             txtCompany = view.findViewById(R.id.txtCompany);
             ic_book = view.findViewById(R.id.ic_book);
 
+            //create long click on object book
+            view.setOnClickListener(this);
+            view.setOnLongClickListener(this);
+
         }
 
+        //methods of implements
+        @Override
+        public void onClick(View view) {
+            int clickPosition = getAdapterPosition();
+
+            Toast.makeText(context, "OnClick " +(clickPosition+1) , Toast.LENGTH_SHORT).show();
+
+        }
+
+        @Override
+        public boolean onLongClick(View view) {
+            int clickPosition = getAdapterPosition();
+
+            Toast.makeText(context, "OnLongClick " +(clickPosition+1), Toast.LENGTH_SHORT).show();
+
+            return true;
+        }
     }
 
 
