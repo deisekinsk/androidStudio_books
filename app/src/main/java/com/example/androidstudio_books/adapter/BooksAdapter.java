@@ -55,7 +55,7 @@ public class BooksAdapter extends RecyclerView.Adapter<BooksAdapter.BookHolder> 
 
         //change color for the boolean case
         if (book.isRead()){
-            holder.ic_book.setColorFilter(Color.GREEN);
+            holder.ic_book.setColorFilter(0xFF165E25);
         }
 
 
