@@ -1,17 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="?attr/selectableItemBackground"
-    >
+    android:background="?attr/selectableItemBackground">
 
     //components
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="3dp"
+        android:layout_margin="4dp"
         android:id="@+id/cardView"
+        app:cardCornerRadius="6dp"
+        app:cardElevation="4dp"
+
         >
 
         <RelativeLayout
@@ -38,6 +41,17 @@
                 android:textSize="18dp"
                 android:textStyle="bold"
                 android:layout_alignParentTop="true"
+                android:textColor="@color/colorPrimaryDark"
+                />
+
+            <ImageView
+                android:id="@+id/ic_star"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_star"
+                android:layout_toRightOf="@id/txtTitle"
+                android:layout_alignParentTop="true"
+                android:visibility="invisible"
                 />
 
             <TextView
@@ -47,6 +61,7 @@
                 android:text="AUTHOR OF BOOK"
                 android:layout_toRightOf="@id/ic_book"
                 android:layout_below="@id/txtTitle"
+                android:textColor="@color/black"
                 />
 
             <TextView
@@ -56,6 +71,7 @@
                 android:text="COMPANY OF BOOK"
                 android:layout_toRightOf="@id/ic_book"
                 android:layout_below="@id/txtAuthor"
+                android:textColor="@color/black"
                 />
 
         </RelativeLayout>
