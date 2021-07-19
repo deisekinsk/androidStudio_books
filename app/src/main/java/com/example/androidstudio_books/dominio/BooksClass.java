@@ -1,12 +1,15 @@
 package com.example.androidstudio_books.dominio;
 
-public class BooksClass {
+import java.io.Serializable;
+
+//Interface - Serializable
+public class BooksClass implements Serializable {
     //attributes
     private  Long id;
     private String title, author, company;
     private int read;
 
-    //class constructor
+    //class constructor for global changes | Like insert new object
     public BooksClass (Long id, String title, String author, String company,  int read){
         this.id = id;
         this.title = title;
@@ -14,6 +17,16 @@ public class BooksClass {
         this.company = company;
         this.read = read;
     }
+    //class constructor without ID | For data persistence
+    public BooksClass (String title, String author, String company,  int read){
+
+        this.title = title;
+        this.author = author;
+        this.company = company;
+        this.read = read;
+    }
+
+
     //methods
 
     //1_id GET
