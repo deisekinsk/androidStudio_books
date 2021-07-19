@@ -11,12 +11,21 @@ public class DBHelper extends SQLiteOpenHelper {
 
     //attribute
     private static DBHelper instance;
-        //receive commands sql
+        //receive commands sql | Create Table
     private static String SQL_CREATE = String.format(
                 //_idCamp
             "CREATE TABLE %s (%s INTEGER PRIMARY KEY AUTOINCREMENT,"+
-            "%s TEXT NOT NULL, %s TEXT NOT NULL, %s TEXT NOT NULL, %s INTEGER NOT NULL)",
+            "%s TEXT NOT NULL, %s TEXT NOT NULL, %s TEXT NOT NULL, %s TEXT NOT NULL, %s INTEGER NOT NULL)",
+                BookContract.TABLE_NAME,
+                BookContract.Columns._ID,
+                BookContract.Columns.title,
+                BookContract.Columns.author,
+                BookContract.Columns.company,
+                BookContract.Columns.read
         );
+
+    //delete table
+    private static String SQL_DROP = "DROP TABLE IF EXISTS "+BookContract.TABLE_NAME;
 
 
 
@@ -38,11 +47,14 @@ public class DBHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
+        db.execSQL(SQL_DROP);
+        db.execSQL(SQL_CREATE);
 
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+        onCreate(db);
 
     }
 }
