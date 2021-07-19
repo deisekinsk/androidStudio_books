@@ -4,10 +4,10 @@ public class BooksClass {
     //attributes
     private  Long id;
     private String title, author, company;
-    private boolean read;
+    private int read;
 
     //class constructor
-    public BooksClass (Long id, String title, String author, String company,  boolean read){
+    public BooksClass (Long id, String title, String author, String company,  int read){
         this.id = id;
         this.title = title;
         this.author = author;
@@ -53,11 +53,7 @@ public class BooksClass {
     }
 
     //read GET
-    public boolean isRead(){
-        return read;
-    }
+    //public boolean isRead(){return read;}
     //read SET
-    public void setRead(boolean read){
-        this.read = read;
-    }
+    //public void setRead(boolean read){this.read = read;}
 }
