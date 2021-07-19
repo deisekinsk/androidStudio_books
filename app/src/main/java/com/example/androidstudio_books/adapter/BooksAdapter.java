@@ -53,9 +53,10 @@ public class BooksAdapter extends RecyclerView.Adapter<BooksAdapter.BookHolder> 
         holder.txtAuthor.setText(book.getAuthor());
         holder.txtCompany.setText(book.getCompany());
 
-        //change color for the boolean case
-        if (book.isRead()){
+        //change color for the boolean case | put star
+        if (book.getToRead() == 1){
             holder.ic_book.setColorFilter(0xFF165E25);
+            holder.ic_star.setVisibility(View.VISIBLE);
         }
 
 
@@ -76,15 +77,17 @@ public class BooksAdapter extends RecyclerView.Adapter<BooksAdapter.BookHolder> 
         public TextView txtAuthor;
         public TextView txtCompany;
         public ImageView ic_book;
+        public ImageView ic_star;
 
 
         public BookHolder (View view){
             super(view);
-
+            //constructor
             txtTitle = view.findViewById(R.id.txtTitle);
             txtAuthor = view.findViewById(R.id.txtAuthor);
             txtCompany = view.findViewById(R.id.txtCompany);
             ic_book = view.findViewById(R.id.ic_book);
+            ic_star = view.findViewById(R.id.ic_star);
 
             //create long click on object book
             view.setOnClickListener(this);

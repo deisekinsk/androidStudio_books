@@ -34,14 +34,14 @@ public class MainActivity extends AppCompatActivity {
         //data and layout of list
         List<BooksClass> booksClassList = new ArrayList<>();
 
-        BooksClass b1 = new BooksClass(1L, "Quem tem medo do feminismo negro?","Djamila Ribeiro","Companhia das Letras", true);
-        BooksClass b2 = new BooksClass(2L, "Insubmissas Lágrimas de Mulheres","Conceição Evaristo","Malê", false);
-        BooksClass b3 = new BooksClass(3L, "(Como eu Ensino) Escravidão no Brasil","Joel Rufino Dos Santos","Melhoramentos", false);
-        BooksClass b4 = new BooksClass(4L, "Heroínas negras basileiras em 15 cordéis","Jarid Arraes","Pólen", true);
-        BooksClass b5 = new BooksClass(5L, "Rastros de resistência: Histórias de luta e liberdade do povo negro","Ale Santos","Panda Books", false);
-        BooksClass b6 = new BooksClass(6L, "O perigo de uma história única","Chimamanda Ngozi Adichie","Companhia das Letras", true);
-        BooksClass b7 = new BooksClass(7L, "Meio Sol Amarelo","Chimamanda Ngozi Adichie","Companhia das Letras", true);
-        BooksClass b8 = new BooksClass(8L, "Eu sou Malala - A história da garota que defendeu o direito à educação e foi baleada pelo Talibã","Malala Yousafzai, Christina Lamb","Companhia das Letras", false);
+        BooksClass b1 = new BooksClass(1L, "Quem tem medo ... ","Djamila Ribeiro","Companhia das Letras", 1);
+        BooksClass b2 = new BooksClass(2L, "Insubmissas Lágrimas de Mulheres","Conceição Evaristo","Malê", 0);
+        BooksClass b3 = new BooksClass(3L, "(Como eu Ensino) Escravidão no Brasil","Joel Rufino Dos Santos","Melhoramentos", 0);
+        BooksClass b4 = new BooksClass(4L, "Heroínas negras ...","Jarid Arraes","Pólen", 1);
+        BooksClass b5 = new BooksClass(5L, "Rastros de resistência: Histórias de luta e liberdade do povo negro","Ale Santos","Panda Books", 0);
+        BooksClass b6 = new BooksClass(6L, "O perigo de uma história única","Chimamanda Ngozi Adichie","Companhia das Letras", 1);
+        BooksClass b7 = new BooksClass(7L, "Meio Sol Amarelo","Chimamanda Ngozi Adichie","Companhia das Letras", 1);
+        BooksClass b8 = new BooksClass(8L, "Eu sou Malala - A história da garota que defendeu o direito à educação e foi baleada pelo Talibã","Malala Yousafzai, Christina Lamb","Companhia das Letras", 0);
 
 
         booksClassList.add(b1);

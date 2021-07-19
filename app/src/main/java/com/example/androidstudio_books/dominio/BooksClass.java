@@ -53,7 +53,7 @@ public class BooksClass {
     }
 
     //read GET
-    //public boolean isRead(){return read;}
+    public int getToRead(){return read;}
     //read SET
-    //public void setRead(boolean read){this.read = read;}
+    public void setRead(int read){this.read = read;}
 }
