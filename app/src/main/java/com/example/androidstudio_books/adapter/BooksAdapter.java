@@ -79,11 +79,17 @@ public class BooksAdapter extends RecyclerView.Adapter<BooksAdapter.BookHolder> 
 
     }
 
+    //method Adapter
+    public BooksClass getItem(int position){
+        return books.get(position);
+    }
+
 
 
 
     //class that get information for cards + implements for long click
-    public class BookHolder extends RecyclerView.ViewHolder implements View.OnClickListener, View.OnLongClickListener {
+    public class BookHolder extends RecyclerView.ViewHolder
+            implements View.OnClickListener, View.OnLongClickListener {
         //attributes
         public TextView txtTitle;
         public TextView txtAuthor;
@@ -115,17 +121,13 @@ public class BooksAdapter extends RecyclerView.Adapter<BooksAdapter.BookHolder> 
         //methods of implements
         @Override
         public void onClick(View view) {
-            int clickPosition = getAdapterPosition();
-
-            Toast.makeText(context, "OnClick " +(clickPosition+1) , Toast.LENGTH_SHORT).show();
+            onBookListener.onBookClick(getAdapterPosition());
 
         }
 
         @Override
         public boolean onLongClick(View view) {
-            int clickPosition = getAdapterPosition();
-
-            Toast.makeText(context, "OnLongClick " +(clickPosition+1), Toast.LENGTH_SHORT).show();
+           onBookListener.onBookLongClick(getAdapterPosition());
 
             return true;
         }

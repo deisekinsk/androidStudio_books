@@ -21,6 +21,8 @@ public class EditBookActivity extends AppCompatActivity {
 
     private BookDAO bookDAO;
 
+    private BooksClass booksClass;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +35,16 @@ public class EditBookActivity extends AppCompatActivity {
         chk_read = findViewById(R.id.check_read);
 
         bookDAO = BookDAO.getInstance(this);
+
+        booksClass = (BooksClass) getIntent().getSerializableExtra("book");
+
+        //condition
+        if(booksClass != null){
+            edt_title.setText(booksClass.getTitle());
+            edt_author.setText(booksClass.getAuthor());
+            edt_company.setText(booksClass.getCompany());
+            chk_read.setChecked((booksClass.getToRead()==1) ? true : false);
+        }
 
     }
 

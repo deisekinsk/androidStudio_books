@@ -10,6 +10,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import com.example.androidstudio_books.R;
 import com.example.androidstudio_books.adapter.BooksAdapter;
@@ -71,7 +72,7 @@ public class MainActivity extends AppCompatActivity implements BooksAdapter.OnBo
         return super.onCreateOptionsMenu(menu);
 
     }
-    //select
+    //Menu ADD | LOGOUT
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item){
         switch (item.getItemId()){
@@ -105,13 +106,22 @@ public class MainActivity extends AppCompatActivity implements BooksAdapter.OnBo
 
     }
 
+    //put book in Intent
     @Override
     public void onBookClick(int position) {
+        //Toast.makeText(this, "onBookClick ="+position, Toast.LENGTH_SHORT).show();
+
+        Intent intent = new Intent(getApplicationContext(),EditBookActivity.class);
+        intent.putExtra("book",booksAdapter.getItem(position));
+        startActivityForResult(intent,101);
+
+
 
     }
 
     @Override
     public void onBookLongClick(int position) {
+        Toast.makeText(this, "onBookLongClick ="+position, Toast.LENGTH_SHORT).show();
 
     }
 }
