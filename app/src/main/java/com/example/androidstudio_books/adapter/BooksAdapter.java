@@ -57,6 +57,9 @@ public class BooksAdapter extends RecyclerView.Adapter<BooksAdapter.BookHolder> 
         if (book.getToRead() == 1){
             holder.ic_book.setColorFilter(0xFF165E25);
             holder.ic_star.setVisibility(View.VISIBLE);
+        }else{
+            holder.ic_book.setColorFilter(Color.parseColor("#734226"));
+            holder.ic_star.setVisibility(View.INVISIBLE);
         }
 
 
