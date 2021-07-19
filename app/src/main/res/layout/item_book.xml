@@ -23,10 +23,10 @@
             android:padding="16dp">
 
             <ImageView
+                android:src="@drawable/ic_book"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/ic_book"
-                android:src="@drawable/ic_book"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentTop="true"
                 android:layout_marginRight="18dp"
@@ -45,10 +45,10 @@
                 />
 
             <ImageView
+                android:src="@drawable/ic_star"
                 android:id="@+id/ic_star"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/ic_star"
                 android:layout_toRightOf="@id/txtTitle"
                 android:layout_alignParentTop="true"
                 android:visibility="invisible"
