@@ -97,6 +97,11 @@ public class MainActivity extends AppCompatActivity implements BooksAdapter.OnBo
 
         }
 
+        if(requestCode == 101 && resultCode == RESULT_OK){
+            refreshListBooks();
+
+        }
+
     }
 
     public  void refreshListBooks(){
@@ -106,7 +111,7 @@ public class MainActivity extends AppCompatActivity implements BooksAdapter.OnBo
 
     }
 
-    //put book in Intent
+    //put book in Intent | Edit Method
     @Override
     public void onBookClick(int position) {
         //Toast.makeText(this, "onBookClick ="+position, Toast.LENGTH_SHORT).show();
@@ -119,9 +124,15 @@ public class MainActivity extends AppCompatActivity implements BooksAdapter.OnBo
 
     }
 
+    //delete method
     @Override
     public void onBookLongClick(int position) {
-        Toast.makeText(this, "onBookLongClick ="+position, Toast.LENGTH_SHORT).show();
+
+        BooksClass booksClass = booksAdapter.getItem(position);
+        bookDAO.delete(booksClass);
+        refreshListBooks();
+
+        Toast.makeText(this, "Deleted success! ="+position, Toast.LENGTH_SHORT).show();
 
     }
 }

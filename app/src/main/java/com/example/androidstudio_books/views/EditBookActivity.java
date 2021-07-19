@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.example.androidstudio_books.R;
 import com.example.androidstudio_books.data.BookDAO;
@@ -77,7 +78,7 @@ public class EditBookActivity extends AppCompatActivity {
             msg = "Refresh with Success! ID="+booksClass.getId();
         }
 
-        
+        Toast.makeText(this,msg, Toast.LENGTH_SHORT).show();
         setResult(RESULT_OK);
         finish();
     }
