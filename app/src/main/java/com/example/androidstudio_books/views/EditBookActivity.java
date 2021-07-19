@@ -59,11 +59,25 @@ public class EditBookActivity extends AppCompatActivity {
         String company = edt_company.getText().toString();
         int read = (chk_read.isChecked()) ? 1 : 0;
 
-        BooksClass bookObj = new BooksClass(title, author, company,read);
+        String msg;
 
-        bookDAO.save(bookObj);
+        if(booksClass == null) {
+            BooksClass bookObj = new BooksClass(title, author, company, read);
+            bookDAO.save(bookObj);
+            msg = "ADD with Success! ID="+bookObj.getId();
+        }else{
 
-        String msg = "Success! ID="+bookObj.getId();
+            booksClass.setTitle(title);
+            booksClass.setAuthor(author);
+            booksClass.setCompany(company);
+            booksClass.setToRead(read);
+
+            bookDAO.update(booksClass);
+
+            msg = "Refresh with Success! ID="+booksClass.getId();
+        }
+
+        
         setResult(RESULT_OK);
         finish();
     }

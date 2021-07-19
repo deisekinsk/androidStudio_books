@@ -43,7 +43,7 @@ public class BooksClass implements Serializable {
         return title;
     }
     //title SET
-    public void getTitle(String title){
+    public void setTitle(String title){
         this.title = title;
     }
 
@@ -68,5 +68,5 @@ public class BooksClass implements Serializable {
     //read GET
     public int getToRead(){return read;}
     //read SET
-    public void setRead(int read){this.read = read;}
+    public void setToRead(int read){this.read = read;}
 }
