@@ -25,6 +25,7 @@ import java.util.ListIterator;
 public class MainActivity extends AppCompatActivity {
     //attribute
     private BookDAO bookDAO;
+    BooksAdapter booksAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,10 +41,10 @@ public class MainActivity extends AppCompatActivity {
         //data and layout of list
 
 
-      //  BooksClass b1 = new BooksClass(1L, "Quem tem medo ... ","Djamila Ribeiro","Companhia das Letras", 1);
+      //  BooksClass b1 = new BooksClass(*1L, "Quem tem medo ... ","Djamila Ribeiro","Companhia das Letras", 1);
       //  BooksClass b2 = new BooksClass(2L, "Insubmissas Lágrimas de Mulheres","Conceição Evaristo","Malê", 0);
       //  BooksClass b3 = new BooksClass(3L, "(Como eu Ensino) Escravidão no Brasil","Joel Rufino Dos Santos","Melhoramentos", 0);
-      //  BooksClass b4 = new BooksClass(4L, "Heroínas negras ...","Jarid Arraes","Pólen", 1);
+      //  BooksClass b4 = new BooksClass(*4L, "Heroínas negras ...","Jarid Arraes","Pólen", 1);
       //  BooksClass b5 = new BooksClass(5L, "Rastros de resistência: Histórias de luta e liberdade do povo negro","Ale Santos","Panda Books", 0);
       //  BooksClass b6 = new BooksClass(6L, "O perigo de uma história única","Chimamanda Ngozi Adichie","Companhia das Letras", 1);
       //  BooksClass b7 = new BooksClass(7L, "Meio Sol Amarelo","Chimamanda Ngozi Adichie","Companhia das Letras", 1);
@@ -56,7 +57,8 @@ public class MainActivity extends AppCompatActivity {
 
         List<BooksClass> booksClassList = bookDAO.list();
 
-        BooksAdapter booksAdapter = new BooksAdapter(booksClassList, this);
+        booksAdapter = new BooksAdapter(booksClassList, this);
+
         recyclerView.setAdapter(booksAdapter);
 
     }
@@ -90,8 +92,16 @@ public class MainActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
 
         if(requestCode == 100 && resultCode == RESULT_OK){
+            refreshListBooks();
 
         }
+
+    }
+
+    public  void refreshListBooks(){
+        List<BooksClass> books = bookDAO.list();
+        booksAdapter.setItems(books);
+        booksAdapter.notifyDataSetChanged();
 
     }
 }

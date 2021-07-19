@@ -68,6 +68,11 @@ public class BooksAdapter extends RecyclerView.Adapter<BooksAdapter.BookHolder> 
         return books.size();
     }
 
+    public void setItems(List<BooksClass> books){
+        this.books =books;
+
+    }
+
 
 
 
