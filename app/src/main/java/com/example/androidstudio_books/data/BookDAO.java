@@ -1,11 +1,13 @@
 package com.example.androidstudio_books.data;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
 import com.example.androidstudio_books.dominio.BooksClass;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class BookDAO {
@@ -39,6 +41,9 @@ public class BookDAO {
                 BookContract.Columns.read
         };
 
+        //create a list of books
+        List<BooksClass> booksArrayList = new ArrayList<>();
+
 
         //query | create a *cursor to be able to scroll through the data
         try(
@@ -55,13 +60,14 @@ public class BookDAO {
 
                 do{
                     BooksClass bookObj = BookDAO.fromCursor(cursorData);
-                    
+                    booksArrayList.add(bookObj);
 
-                }while (cursorData.moveToNext())
+
+                }while (cursorData.moveToNext());
             }
 
         }
-
+        return booksArrayList;
     }
 
     private static BooksClass fromCursor(Cursor cursorData){
@@ -72,6 +78,46 @@ public class BookDAO {
         int read = cursorData.getInt(cursorData.getColumnIndex(BookContract.Columns.read));
 
         return  new BooksClass(id, title, author, company, read);
+    }
+
+    //method create and insert in DB | id
+    public void save(BooksClass booksClass){
+
+        ContentValues values = new ContentValues();
+        values.put(BookContract.Columns.title,booksClass.getTitle());
+        values.put(BookContract.Columns.author,booksClass.getAuthor());
+        values.put(BookContract.Columns.company,booksClass.getCompany());
+        values.put(BookContract.Columns.read,booksClass.getToRead());
+
+
+        Long id = db.insert(BookContract.TABLE_NAME,null,values);
+        booksClass.setId(id);
+
+    }
+
+    //method update
+    public void update(BooksClass booksClass){
+        ContentValues values = new ContentValues();
+
+        values.put(BookContract.Columns.title,booksClass.getTitle());
+        values.put(BookContract.Columns.author,booksClass.getAuthor());
+        values.put(BookContract.Columns.company,booksClass.getCompany());
+        values.put(BookContract.Columns.read,booksClass.getToRead());
+
+        db.update(BookContract.TABLE_NAME,
+                values,
+                BookContract.Columns._ID+"?",
+                new String[]{String.valueOf(booksClass.getId())}
+
+        );
+
+    }
+    //method delete
+    public void delete(BooksClass booksClass){
+        db.delete(BookContract.TABLE_NAME,
+                BookContract.Columns._ID+"?",
+                new String[]{String.valueOf(booksClass.getId())}
+        );
     }
 
 }
