@@ -121,6 +121,11 @@ public class BooksAdapter extends RecyclerView.Adapter<BooksAdapter.BookHolder> 
             return true;
         }
     }
+    //INTERFACE
+    public interface OnBookListener{
+        void onBookClick(int position);
+        void onBookLongClick(int position);
 
+    }
 
 }
