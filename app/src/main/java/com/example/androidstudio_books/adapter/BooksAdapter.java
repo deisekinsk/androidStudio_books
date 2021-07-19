@@ -24,11 +24,14 @@ public class BooksAdapter extends RecyclerView.Adapter<BooksAdapter.BookHolder> 
     private List<BooksClass> books;
     private Context context;
 
+    private  OnBookListener onBookListener;
+
 
     //constructor
-    public BooksAdapter (List<BooksClass>books, Context context){
+    public BooksAdapter (List<BooksClass>books, Context context, OnBookListener onBookListener){
         this.books = books;
         this.context = context;
+        this.onBookListener = onBookListener;
     }
 
 
@@ -40,7 +43,7 @@ public class BooksAdapter extends RecyclerView.Adapter<BooksAdapter.BookHolder> 
         View view = LayoutInflater.from(context)
                 .inflate(R.layout.item_book, parent, false);
 
-        BookHolder bookHolder = new BookHolder(view);
+        BookHolder bookHolder = new BookHolder(view, onBookListener);
 
         return bookHolder; //return for the method onBindViewHolder
     }
@@ -81,14 +84,18 @@ public class BooksAdapter extends RecyclerView.Adapter<BooksAdapter.BookHolder> 
 
     //class that get information for cards + implements for long click
     public class BookHolder extends RecyclerView.ViewHolder implements View.OnClickListener, View.OnLongClickListener {
+        //attributes
         public TextView txtTitle;
         public TextView txtAuthor;
         public TextView txtCompany;
         public ImageView ic_book;
         public ImageView ic_star;
 
+        public OnBookListener onBookListener;
 
-        public BookHolder (View view){
+
+        //constructor
+        public BookHolder (View view, OnBookListener onBookListener){
             super(view);
             //constructor
             txtTitle = view.findViewById(R.id.txtTitle);
@@ -96,6 +103,8 @@ public class BooksAdapter extends RecyclerView.Adapter<BooksAdapter.BookHolder> 
             txtCompany = view.findViewById(R.id.txtCompany);
             ic_book = view.findViewById(R.id.ic_book);
             ic_star = view.findViewById(R.id.ic_star);
+
+            this.onBookListener = onBookListener;
 
             //create long click on object book
             view.setOnClickListener(this);

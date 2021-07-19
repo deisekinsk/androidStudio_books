@@ -57,7 +57,7 @@ public class MainActivity extends AppCompatActivity implements BooksAdapter.OnBo
 
         List<BooksClass> booksClassList = bookDAO.list();
 
-        booksAdapter = new BooksAdapter(booksClassList, this);
+        booksAdapter = new BooksAdapter(booksClassList, this, this);
 
         recyclerView.setAdapter(booksAdapter);
 
@@ -102,6 +102,16 @@ public class MainActivity extends AppCompatActivity implements BooksAdapter.OnBo
         List<BooksClass> books = bookDAO.list();
         booksAdapter.setItems(books);
         booksAdapter.notifyDataSetChanged();
+
+    }
+
+    @Override
+    public void onBookClick(int position) {
+
+    }
+
+    @Override
+    public void onBookLongClick(int position) {
 
     }
 }
