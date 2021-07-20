@@ -15,6 +15,7 @@ import android.widget.Toast;
 import com.example.androidstudio_books.R;
 import com.example.androidstudio_books.adapter.BooksAdapter;
 import com.example.androidstudio_books.data.BookDAO;
+import com.example.androidstudio_books.dialogs.DeleteDialog;
 import com.example.androidstudio_books.dominio.BooksClass;
 
 import java.util.ArrayList;
@@ -23,7 +24,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.ListIterator;
 
-public class MainActivity extends AppCompatActivity implements BooksAdapter.OnBookListener{
+public class MainActivity extends AppCompatActivity implements BooksAdapter.OnBookListener, DeleteDialog.OnDeleteListener {
     //attribute
     private BookDAO bookDAO;
     BooksAdapter booksAdapter;
@@ -129,10 +130,21 @@ public class MainActivity extends AppCompatActivity implements BooksAdapter.OnBo
     public void onBookLongClick(int position) {
 
         BooksClass booksClass = booksAdapter.getItem(position);
+
+        DeleteDialog dialog = new DeleteDialog();
+        dialog.setBooksClass(booksClass);
+        dialog.show(getSupportFragmentManager(),"deleteDialog");
+
+
+
+    }
+
+    @Override
+    public void onDelete(BooksClass booksClass) {
         bookDAO.delete(booksClass);
         refreshListBooks();
 
-        Toast.makeText(this, "Deleted success! ="+position, Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "Deleted success!", Toast.LENGTH_SHORT).show();
 
     }
 }
